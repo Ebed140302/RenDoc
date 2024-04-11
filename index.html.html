@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Documentación de la API utilizando Swagger UI">
+    <meta name="keywords" content="API, Swagger, Documentación">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación de la API</title>
+    <link rel="icon" href="favicon.ico" type="https://beta.renplay.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Frenplay1blanco.e592a8ef.png&w=256&q=75">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.52.0/swagger-ui.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.52.0/swagger-ui-bundle.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.52.0/swagger-ui-standalone-preset.js" defer></script>
+</head>
+<body>
+
+<main>
+    <div id="swagger-ui"></div>
+</main>
+
+<script>
+    window.onload = function() {
+        // Limpia fragmentos de URL para evitar que la vinculación profunda abra pestañas
+        if (window.location.hash) {
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+        }
+
+        // Crea e inicializa la instancia de Swagger UI
+        const ui = SwaggerUIBundle({
+            url: "https://raw.githubusercontent.com/Ebed140302/documentacion.yaml/main/doc.yaml",
+            dom_id: '#swagger-ui',
+            deepLinking: false, // Establecer en false para deshabilitar la vinculación profunda
+            presets: [
+                SwaggerUIBundle.presets.apis,
+                SwaggerUIStandalonePreset
+            ],
+            plugins: [
+                SwaggerUIBundle.plugins.DownloadUrl
+            ],
+            layout: "StandaloneLayout"
+        });
+
+        window.ui = ui;
+    };
+</script>
+
+</body>
+</html>
